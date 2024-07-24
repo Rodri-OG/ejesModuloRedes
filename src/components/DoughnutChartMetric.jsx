@@ -74,7 +74,7 @@ export default function DoughnutChartMetric({ idMetricas }) {
   }
 
   const options = {
-    maintainAspectRatio: false,
+    maintainAspectRatio: true,
     responsive: true,
     plugins: {
       legend: {
@@ -96,7 +96,8 @@ export default function DoughnutChartMetric({ idMetricas }) {
   };
 
 
-  return <div className="relative w-full h-full min-h-[300px] sm:min-h-[20rem] md:min-h-[20rem] lg:min-h-[20rem]">
+
+  return <div className="relative w-full h-full max-w-[1000px] max-h-[1000px] min-h-[300px] sm:min-h-[20rem] md:min-h-[20rem] lg:min-h-[20rem]">
   <Doughnut data={dataChart} options={options} />
 </div>;
 }

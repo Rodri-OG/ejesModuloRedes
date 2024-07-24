@@ -15,9 +15,9 @@ export default function Sidebar() {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem('user');
+    sessionStorage.removeItem('user');
     setSelectedOption(null); 
-    setIsOpen(!isOpen);
+    setIsOpen(false);
     router.push('/auth/signin');
   };
 
@@ -45,8 +45,8 @@ export default function Sidebar() {
         <h1 className="font-semibold text-sm	text-center text-[#404040]">Ejes de Comunicación Redes</h1>
       </div>
       
-      <nav className="grid grid-cols-1 grid-rows-[0.1fr_1fr_1fr] h-fit md:grid-rows-[0.1fr_0.2fr_2fr_0.2fr] md:grid-cols-1 md:grid md:gap-4 md:min-w-[240px] font-sans text-base font-normal text-gray-700 ">
-        <ul>
+      <div className="grid grid-cols-1 grid-rows-[0.1fr_1fr_1fr]  md:grid-rows-[0.1fr_0.2fr_3fr_0.2fr] md:grid-cols-1 md:grid md:gap-4 md:min-w-[240px] font-sans text-base font-normal text-gray-700 ">
+        <div>
           <button
               onClick={toggleSidebar}
               className=" flex items-center w-full p-3 rounded-lg bg-[#F5F5F5] text-[#404040] text-start leading-tight transition-all hover:bg-[#DBDBDB] hover:bg-opacity-80 focus:bg-[#DBDBDB] focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none" >
@@ -54,29 +54,27 @@ export default function Sidebar() {
               <span className="material-icons">menu_open</span>
               </div>
           </button>
-        </ul>
-        <ul>
+        </div>
+        <div>
           <Link href={"/"}>
             <MenuItem title={"Dashboard"} icon={"home"} />
           </Link>
           <MenuItemDropdown title={"Seguimientos"} icon={"folder_open"} handleClick={handleClick}/>
-        </ul>
+        </div>
 
-        <ul className="grid grid-rows-2 grid-cols-1 gap-4 h-fit md:grid-rows-2 md:grid-cols-1 md:row-start-4 md:row-end-5">
+        <div className="grid grid-rows-1 grid-cols-2 md:grid-rows-2 md:grid-cols-1 md:row-start-4 md:row-end-5">
           <Link href={"/support"}>
             <MenuItem title={"Atención al cliente"} icon={"contact_support"} />
           </Link>
             
-          <Link href="" >
-            <button onClick={handleLogout} className="flex items-center w-full p-3 rounded-lg bg-[#F5F5F5] text-[#404040] shadow-xl text-start leading-tight transition-all hover:bg-[#DBDBDB] hover:bg-opacity-80 focus:bg-[#DBDBDB] focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
+            <button onClick={handleLogout} className="flex items-center place-items-end w-full p-3 rounded-lg bg-[#F5F5F5] text-[#404040] shadow-xl text-start leading-tight transition-all hover:bg-[#DBDBDB] hover:bg-opacity-80 focus:bg-[#DBDBDB] focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
                 <div className="grid place-items-center mr-4">
                   <span className="material-icons">logout</span>
                 </div>
               Cerrar sesión
             </button>
-          </Link>
-        </ul>
-      </nav>
+        </div>
+      </div>
     </div>
     :
     <div className="grid grid-cols-[0.2fr_1fr] grid-rows-1 min-w-[4rem] h-full md:gap-4 md:grid-rows-[0.01fr_1fr] md:grid-cols-1 ">
@@ -120,7 +118,6 @@ export default function Sidebar() {
             </button>
           </Link>
 
-          <Link href="" className=" place-items-end ">
             <button
               onClick={handleLogout}
               className=" flex items-center  w-full p-3  rounded-lg bg-[#F5F5F5] text-[#404040] shadow-xl text-start leading-tight transition-all hover:bg-[#DBDBDB] hover:bg-opacity-80 focus:bg-[#DBDBDB] focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
@@ -128,7 +125,6 @@ export default function Sidebar() {
                 <span className="material-icons">logout</span>
               </div>
             </button>
-          </Link>
         </div>
       </div>
     </div>
